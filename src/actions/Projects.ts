@@ -47,8 +47,7 @@ export async function isProjectLikedByUser(user: string) {
       }
     ])
     const projects = allProjects.filter((ele) => {
-      return ele?.interest_info?.some(ele2 => ele2?.interestedBy?.equals(userId))
-      return ele
+      return ele?.interest_info?.some((ele2: any) => ele2?.interestedBy?.equals(userId))
     })
     console.log(projects, allProjects)
     return JSON.parse(JSON.stringify({ status: 200, msg: "Success", ...(projects.length > 0 && { projects }), ...(projects.length! >= 0 && { projects: allProjects }) }))
@@ -63,7 +62,7 @@ export async function fetchAllprojects() {
     const projects = await Project.find()
     return JSON.parse(JSON.stringify({ status: 200, msg: "Successfull", projects }))
   } catch (err) {
-    consoel.log(err)
+    console.log(err)
     throw err
   }
 }
