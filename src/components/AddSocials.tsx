@@ -1,20 +1,23 @@
 import React from 'react'
 import SocialCustomForm from './SocialCustomForm'
 
+
+type SocialLinkFieldName = "linkedin" | "twitter" | "github";
+
 const socialLinkField = [
   {
     id: 1,
-    name: "linkedin",
+    name: "linkedin" as SocialLinkFieldName,
     placeholder: "https://linkedin.com/in/*username*"
   },
   {
     id: 2,
-    name: "twitter",
+    name: "twitter" as SocialLinkFieldName,
     placeholder: "https://twitter.com/*username*"
   },
   {
     id: 3,
-    name: "github",
+    name: "github" as SocialLinkFieldName,
     placeholder: "https://github.com/*username*"
   }
 ]
