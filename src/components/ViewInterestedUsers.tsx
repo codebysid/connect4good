@@ -11,9 +11,17 @@ import { Button } from './ui/button'
 import { fetchInterestedUsersForGroups } from '@/actions/Projects'
 
 type TUser = {
-  name: string
+  name: string,
+  socials?: {
+    linkedin?: string,
+    github?: string,
+    twitter?: string
+  }
 }
 
+type TInterest = {
+  user_info: TUser[]
+}
 const ViewInterestedUsers = ({ projectId }: { projectId: string }) => {
   const [users, setUsers] = useState<TUser[]>()
   const handleGetUsers = async () => {
@@ -40,8 +48,8 @@ const ViewInterestedUsers = ({ projectId }: { projectId: string }) => {
             <DialogTitle>Interested Users</DialogTitle>
             <div className=' flex flex-col gap-3'>
               {
-                users && users?.length > 0 ? users?.map((ele: any) => {
-                  return ele.user_info.map((ele2: any, key: number) => {
+                users && users?.length > 0 ? users?.map((ele: TInterest) => {
+                  return ele.user_info.map((ele2: TUser, key: number) => {
                     return <div key={key} className=' border border-secondary-foreground rounded-xl md:p-4 lg:p-4'>
                       <p>{ele2.name}</p>
                       {
